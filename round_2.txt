@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+#include<cstring>
+#include <unordered_set>
+using namespace std;
+
+void exp(string stri, int low, int high, auto &set)
+{
+	while (low >= 0 && high < stri.length()
+			&& stri[low] == stri[high])
+	{
+		
+		set.insert(stri.substr(low, high - low + 1));
+
+		low--, high++;
+	}
+}
+
+void allPalindromicSubstrings(string stri)
+{
+	unordered_set<string> set;
+    
+	for (int i = 0; i < stri.length(); i++)
+	{
+	
+		exp(stri, i, i, set);
+		exp(stri, i, i + 1, set);
+		
+	}
+
+	for (auto i : set){
+		cout << i << "";
+		//strcat(strin,i);
+		
+	}
+}
+
+int main()
+{
+	string stri = "acaagherynhkacabaacabcfdjacaagherynhkacabaacacaabacakhnyrehgaacaslooeuecslsceueoolsacaagherynhkacabaacacaabacakhnyrehgaacajdfcbacaabacakhnyrehgaacacaagherynhkacabaacabcfdjacaagherynhkacabaacacaabacakhnyrehgaacaslooeuecslsceueoolsacaagherynhkacabaacacaabacakhnyrehgaacajdfcbacaabacakhnyrehgaacaporyiueoooeuiyropacaagherynhkacabaacabcfdjacaagherynhkacabaacacaabacakhnyrehgaacaslooeuecslsceueoolsacaagherynhkacabaacacaabacakhnyrehgaacajdfcbacaabacakhnyrehgaacacaagherynhkacabaacabcfdjacaagherynhkacabaacacaabacakhnyrehgaacaslooeuecslsceueoolsacaagherynhkacabaacacaabacakhnyrehgaacajdfcbacaabacakhnyrehgaacaplwerintawerq";
+    
+	allPalindromicSubstrings(stri);
+   
+	return 0;
+}
